@@ -36,4 +36,11 @@ public class Board {
 	public Piece piece(Position position) {
 		return pieces[position.getRow()][position.getColumn()];
 	}
+	
+	// Função que adiciona uma determinada peça em determinada posição
+	// do tabuleiro
+	public void placePiece(Piece piece, Position position) {
+		this.pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position; // podemos acessar por que poosition de piece é protected
+	}
 }
