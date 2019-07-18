@@ -48,6 +48,21 @@ public class Board {
 		piece.position = position; // podemos acessar por que poosition de piece é protected
 	}
 	
+	// remove uma peça e a retorna
+	// imagino que o retorno é para colocar em uma lista de peça capturadas
+	public Piece removePiece(Position position) {
+		if(!positionExists(position)) {
+			throw new BoardException("Position not on the board");
+		}
+		if(piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;
+		this.pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
+	
 	// Funções que validam uma posição
 	private boolean positionExists(int row, int column) {
 		return row >= 0 && row < this.rows && column >= 0 && column < this.columns; 
